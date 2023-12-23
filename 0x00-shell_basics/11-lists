@@ -1,4 +1,2 @@
 #!/bin/bash
-echo -e "\n/boot Directory:"
-cd /boot
-ls -la
+ls -la . .. /boot

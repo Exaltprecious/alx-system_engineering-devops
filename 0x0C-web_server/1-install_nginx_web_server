@@ -1,7 +1,28 @@
 #!/usr/bin/env bash
-# Installs nginx server
-apt-get update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
-service nginx start
+#
+# Description:
+#   This script installs Nginx web server on the web server and ensures that Nginx
+#   is listening on port 80. It also writes a "Hello World!" message to the default
+#   HTML file.
+#
+
+# Update package index
+sudo apt-get -y update
+
+# Update package index
+sudo apt-get -y update
+
+# Install Nginx
+sudo apt-get -y install nginx
+
+# Allow HTTP traffic through firewall
+sudo ufw allow "Nginx HTTP"
+
+# Change ownership of default HTML file to current user
+sudo chown -R $USER:$USER /var/www/html/index.nginx-debian.html
+
+# Write "Hello World!" to HTML file
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
+# Restart Nginx service
+sudo service nginx restart
